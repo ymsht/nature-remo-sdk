@@ -9,11 +9,11 @@ import (
 )
 
 type User struct {
-	ID int `json:"id"`
+	ID       int    `json:"id"`
 	Nickname string `json:"nickname"`
 }
 
-func me() {
+func GetMe() {
 	url := "https://api.nature.global/1/users/me"
 	token := ""
 	client := &http.Client{}
@@ -33,14 +33,14 @@ func me() {
 	if res.StatusCode != http.StatusOK {
 		log.Fatal(res)
 	}
-	   
+
 	body, err := ioutil.ReadAll(res.Body)
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Println(string(body))
-	
+
 	var users []User
 	err = json.Unmarshal(body, &users)
 	if err != nil {
@@ -50,5 +50,4 @@ func me() {
 	for i := 0; i < len(users); i++ {
 		fmt.Println(users[i])
 	}
-
 }
