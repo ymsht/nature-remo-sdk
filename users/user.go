@@ -15,7 +15,7 @@ type User struct {
 
 func GetMe() {
 	url := "https://api.nature.global/1/users/me"
-	token := ""
+	token := "Bearer "
 	client := &http.Client{}
 
 	req, err := http.NewRequest("GET", url, nil)
@@ -23,7 +23,8 @@ func GetMe() {
 		log.Fatal(err)
 	}
 
-	req.Header.Add("Bearer", token)
+	req.Header.Add("Authorization", token)
+	req.Header.Add("accept", "application/json")
 	res, err := client.Do(req)
 	if err != nil {
 		log.Fatal(err)
