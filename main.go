@@ -1,7 +1,11 @@
 package main
 
-import "ymsht/nature-remo-sdk/user"
+import (
+	"fmt"
+	"ymsht/nature-remo-sdk/user"
+)
 
 func main() {
-	user.GetMe()
+	user := user.GetMe()
+	fmt.Print(user)
 }

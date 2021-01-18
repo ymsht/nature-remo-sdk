@@ -1,19 +1,18 @@
-package users
+package user
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
 type User struct {
-	ID       int    `json:"id"`
+	ID       string `json:"id"`
 	Nickname string `json:"nickname"`
 }
 
-func GetMe() {
+func GetMe() User {
 	url := "https://api.nature.global/1/users/me"
 	token := "Bearer "
 	client := &http.Client{}
@@ -40,15 +39,11 @@ func GetMe() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(string(body))
-
-	var users []User
-	err = json.Unmarshal(body, &users)
+	var user User
+	err = json.Unmarshal(body, &user)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for i := 0; i < len(users); i++ {
-		fmt.Println(users[i])
-	}
+	return user
 }
