@@ -13,6 +13,7 @@ type User struct {
 }
 
 func GetMe() User {
+	// TODO 作成中
 	url := "https://api.nature.global/1/users/me"
 	token := "Bearer "
 	client := &http.Client{}
