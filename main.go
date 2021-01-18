@@ -1,7 +1,7 @@
 package main
 
-import "ymsht/nature-remo-sdk/users"
+import "ymsht/nature-remo-sdk/user"
 
 func main() {
-	users.GetMe()
+	user.GetMe()
 }
