@@ -2,15 +2,12 @@ package nature_remo_sdk
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
 )
-
-type NatureRemoSdk struct {
-	Token string
-}
 
 type User struct {
 	ID       string `json:"id"`
@@ -23,6 +20,8 @@ func (s *NatureRemoSdk) GetMe() User {
 	// TODO 作成中
 	client := &http.Client{}
 	client.Timeout = time.Second * 30
+
+	fmt.Print(s.Token)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
