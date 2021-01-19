@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 )
 
 type User struct {
@@ -17,6 +18,7 @@ func GetMe() User {
 	url := "https://api.nature.global/1/users/me"
 	token := "Bearer "
 	client := &http.Client{}
+	client.Timeout = time.Second * 30
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {

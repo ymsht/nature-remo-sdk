@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	// Get me
 	user := user.GetMe()
 	fmt.Print(user)
 }
