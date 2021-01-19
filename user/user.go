@@ -8,15 +8,19 @@ import (
 	"time"
 )
 
+type NatureRemoSdk struct {
+	Token string
+}
+
 type User struct {
 	ID       string `json:"id"`
 	Nickname string `json:"nickname"`
 }
 
-func GetMe() User {
+const url = "https://api.nature.global/1/users/me"
+
+func (s *NatureRemoSdk) GetMe() User {
 	// TODO 作成中
-	url := "https://api.nature.global/1/users/me"
-	token := "Bearer "
 	client := &http.Client{}
 	client.Timeout = time.Second * 30
 
@@ -25,7 +29,7 @@ func GetMe() User {
 		log.Fatal(err)
 	}
 
-	req.Header.Add("Authorization", token)
+	req.Header.Add("Authorization", s.Token)
 	req.Header.Add("accept", "application/json")
 	res, err := client.Do(req)
 	if err != nil {

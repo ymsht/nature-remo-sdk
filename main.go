@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"ymsht/nature-remo-sdk/user"
 )
 
 func main() {
+	token := "Bearer "
+	sdk := &NatureRemoSdk{Token: token}
+
 	// Get me
-	user := user.GetMe()
+	user := sdk.GetMe()
 	fmt.Print(user)
 }
