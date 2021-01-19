@@ -1,4 +1,4 @@
-package main
+package nature_remo_sdk
 
 import (
 	"fmt"

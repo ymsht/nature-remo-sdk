@@ -1,4 +1,4 @@
-package user
+package nature_remo_sdk
 
 import (
 	"encoding/json"
