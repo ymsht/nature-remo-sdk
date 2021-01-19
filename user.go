@@ -2,7 +2,6 @@ package nature_remo_sdk
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -16,12 +15,10 @@ type User struct {
 
 const url = "https://api.nature.global/1/users/me"
 
-func (s *NatureRemoSdk) GetMe() User {
+func (s *NatureRemoSdk) GetMe() (User, error) {
 	// TODO 作成中
 	client := &http.Client{}
 	client.Timeout = time.Second * 30
-
-	fmt.Print(s.Token)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -51,5 +48,5 @@ func (s *NatureRemoSdk) GetMe() User {
 		log.Fatal(err)
 	}
 
-	return user
+	return user, nil
 }
