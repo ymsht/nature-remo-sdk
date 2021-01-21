@@ -13,5 +13,14 @@ func TestGetMe(t *testing.T) {
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	fmt.Printf(user.Nickname)
+	fmt.Printf("%s\n", user.Nickname)
+}
+
+func TestDevice(t *testing.T) {
+	sdk := sdk.NatureRemoSdk{Token: "Bearer "}
+	device, err := sdk.GetDevice()
+	if err != nil {
+		fmt.Printf(err.Error())
+	}
+	fmt.Printf("%s\n", device.ID)
 }
