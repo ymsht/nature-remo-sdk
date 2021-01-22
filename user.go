@@ -12,7 +12,7 @@ type User struct {
 const url_users = "https://api.nature.global/1/users/me"
 
 // TODO 作成中
-func (s *NatureRemoSdk) GetMe() (User, error) {
+func (s NatureRemoSdk) GetMe() (User, error) {
 	var user User
 
 	body, err := s.request("GET", url_users)

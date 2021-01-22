@@ -17,19 +17,19 @@ type Device struct {
 	Serial_number      string    `json:"serial_number"`
 	Newest_events      struct {
 		Te struct {
-			Val        int       `json:"val"`
+			Val        float32   `json:"val"`
 			Created_at time.Time `json:"created_at"`
 		} `json:"newest_events"`
 		Hu struct {
-			Val        int       `json:"val"`
+			Val        float32   `json:"val"`
 			Created_at time.Time `json:"created_at"`
 		} `json:"hu"`
 		Il struct {
-			Val        int       `json:"val"`
+			Val        float32   `json:"val"`
 			Created_at time.Time `json:"created_at"`
 		} `json:"il"`
 		Mo struct {
-			Val        int       `json:"val"`
+			Val        float32   `json:"val"`
 			Created_at time.Time `json:"created_at"`
 		} `json:"mo"`
 	} `json:"newest_events"`
@@ -38,18 +38,18 @@ type Device struct {
 const url_devices = "https://api.nature.global/1/devices"
 
 // TODO 作成中
-func (s *NatureRemoSdk) GetDevice() (Device, error) {
-	var device Device
+func (s NatureRemoSdk) GetDevice() ([]Device, error) {
+	var devices []Device
 
 	body, err := s.request("GET", url_devices)
 	if err != nil {
-		return device, err
+		return devices, err
 	}
 
-	err = json.Unmarshal(body, &device)
+	err = json.Unmarshal(body, &devices)
 	if err != nil {
-		return device, err
+		return devices, err
 	}
 
-	return device, nil
+	return devices, nil
 }

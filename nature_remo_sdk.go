@@ -12,7 +12,7 @@ type NatureRemoSdk struct {
 	Token string
 }
 
-func (s *NatureRemoSdk) request(method string, url string) ([]byte, error) {
+func (s NatureRemoSdk) request(method string, url string) ([]byte, error) {
 	client := &http.Client{}
 	client.Timeout = time.Second * 30
 
