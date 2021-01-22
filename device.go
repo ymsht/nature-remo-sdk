@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type sensorValue struct {
+	Val        float32   `json:"val"`
+	Created_at time.Time `json:"created_at"`
+}
+
 type Device struct {
 	ID                 string    `json:"id"`
 	Name               string    `json:"name"`
@@ -16,22 +21,10 @@ type Device struct {
 	Mac_address        string    `json:"mac_address"`
 	Serial_number      string    `json:"serial_number"`
 	Newest_events      struct {
-		Te struct {
-			Val        float32   `json:"val"`
-			Created_at time.Time `json:"created_at"`
-		} `json:"newest_events"`
-		Hu struct {
-			Val        float32   `json:"val"`
-			Created_at time.Time `json:"created_at"`
-		} `json:"hu"`
-		Il struct {
-			Val        float32   `json:"val"`
-			Created_at time.Time `json:"created_at"`
-		} `json:"il"`
-		Mo struct {
-			Val        float32   `json:"val"`
-			Created_at time.Time `json:"created_at"`
-		} `json:"mo"`
+		Te sensorValue `json:"newest_events"`
+		Hu sensorValue `json:"hu"`
+		Il sensorValue `json:"il"`
+		Mo sensorValue `json:"mo"`
 	} `json:"newest_events"`
 }
 
