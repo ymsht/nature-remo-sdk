@@ -21,7 +21,7 @@ type Device struct {
 	Mac_address        string    `json:"mac_address"`
 	Serial_number      string    `json:"serial_number"`
 	Newest_events      struct {
-		Te sensorValue `json:"newest_events"`
+		Te sensorValue `json:"te"`
 		Hu sensorValue `json:"hu"`
 		Il sensorValue `json:"il"`
 		Mo sensorValue `json:"mo"`
