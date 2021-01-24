@@ -18,9 +18,9 @@ func TestGetMe(t *testing.T) {
 
 func TestDevice(t *testing.T) {
 	sdk := sdk.NatureRemoSdk{Token: "Bearer "}
-	device, err := sdk.GetDevice()
+	devices, err := sdk.GetDevice()
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	fmt.Printf("%s\n", device.ID)
+	fmt.Printf("%f\n", devices[0].Newest_events.Te.Val)
 }
