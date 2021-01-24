@@ -1,3 +1,3 @@
-module ymsht/nature-remo-sdk
+module github.com/ymsht/nature-remo-sdk
 
 go 1.15
