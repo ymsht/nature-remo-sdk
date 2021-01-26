@@ -13,14 +13,14 @@ type sensorValue struct {
 type Device struct {
 	ID                 string    `json:"id"`
 	Name               string    `json:"name"`
-	Temperature_offset int       `json:"temperature_offset"`
-	Humidity_offset    int       `json:"humidity_offset"`
-	Created_at         time.Time `json:"created_at"`
-	Updated_at         time.Time `json:"updated_at"`
-	Firmware_version   string    `json:"firmware_version"`
-	Mac_address        string    `json:"mac_address"`
-	Serial_number      string    `json:"serial_number"`
-	Newest_events      struct {
+	TemperatureOffset int       `json:"temperature_offset"`
+	HumidityOffset    int       `json:"humidity_offset"`
+	CreatedAt         time.Time `json:"created_at"`
+	UpdatedAt         time.Time `json:"updated_at"`
+	FirmwareVersion   string    `json:"firmware_version"`
+	MacAddress        string    `json:"mac_address"`
+	SerialNumber      string    `json:"serial_number"`
+	NewestEvents      struct {
 		Te sensorValue `json:"te"`
 		Hu sensorValue `json:"hu"`
 		Il sensorValue `json:"il"`

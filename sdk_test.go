@@ -3,7 +3,7 @@ package nature_remo_sdk_test
 import (
 	"fmt"
 	"testing"
-	sdk "ymsht/nature-remo-sdk"
+	sdk "github.com/ymsht/nature-remo-sdk"
 )
 
 // TODO テストかく
@@ -22,5 +22,5 @@ func TestDevice(t *testing.T) {
 	if err != nil {
 		fmt.Printf(err.Error())
 	}
-	fmt.Printf("%f\n", devices[0].Newest_events.Te.Val)
+	fmt.Printf("%v\n", devices[0])
 }
