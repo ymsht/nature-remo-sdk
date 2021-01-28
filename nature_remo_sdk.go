@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strconv"
 	"time"
+	"math/rand"
 )
 
 type NatureRemoSdk struct {
@@ -25,7 +26,23 @@ func (s NatureRemoSdk) request(method string, url string) ([]byte, error) {
 	req.Header.Add("accept", "application/json")
 	res, err := client.Do(req)
 	if err != nil {
-		return nil, err
+		rand.Seed(time.Now().UnixNano())
+		upperLimit := 3
+		retryNum := 0
+		for {
+			res, err = client.Do(req)
+			if err != nil {
+				if retryNum > upperLimit {
+                	return nil, err
+				}
+			
+				waitTime := 2 ^ retryNum + rand.Intn(1000) / 1000
+				time.Sleep(time.Duration(waitTime) * time.Second)
+				retryNum++
+				continue
+			}
+			break
+		}
 	}
 
 	defer res.Body.Close()
