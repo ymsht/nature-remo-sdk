@@ -3,10 +3,10 @@ package nature_remo_sdk
 import (
 	"errors"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"strconv"
 	"time"
-	"math/rand"
 )
 
 type NatureRemoSdk struct {
@@ -32,11 +32,11 @@ func (s NatureRemoSdk) request(method string, url string) ([]byte, error) {
 		for {
 			res, err = client.Do(req)
 			if err != nil {
-				if retryNum > upperLimit {
-                	return nil, err
+				if retryNum >= upperLimit {
+					return nil, err
 				}
-			
-				waitTime := 2 ^ retryNum + rand.Intn(1000) / 1000
+
+				waitTime := 2 ^ retryNum + rand.Intn(1000)/1000
 				time.Sleep(time.Duration(waitTime) * time.Second)
 				retryNum++
 				continue
